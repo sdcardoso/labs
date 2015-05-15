@@ -4,6 +4,7 @@ title: Normalization
 ---
 
 ```{r options, echo=FALSE}
+library(knitr)
 opts_chunk$set(fig.path=paste0("figure/", sub("(.*).Rmd","\\1",basename(knitr:::knit_concord$get('infile'))), "-"))
 ```
 
@@ -225,7 +226,7 @@ mypar(1,1)
 maplot(log2(y1),log2(y2),ylim=c(-1,1),curve.add=FALSE)
 ```
 
-For this type of data, the variance depends on the mean. We seek a transfromation that stabilizies the variance of the estimates of $\theta$ after we subctract the additive background estimate and divide by the estimate of the gain.
+For this type of data, the variance depends on the mean. We seek a transformation that stabilizies the variance of the estimates of $\theta$ after we subctract the additive background estimate and divide by the estimate of the gain.
 
 ```{r}
 ny1=(y1-b1)/A1
@@ -246,7 +247,7 @@ $$
 \text{arsinh}(y) = \log\left(y + \sqrt{y^2+1} \right)
 $$
 
-The `vsn` library implements this apprach. It estimates $\beta$ and $A$ by assuming that most genes don't change, i.e. $\theta$ does not depend on $i$.
+The `vsn` library implements this approach. It estimates $\beta$ and $A$ by assuming that most genes don't change, i.e. $\theta$ does not depend on $i$.
 ```{r}
 
 library(vsn)
